@@ -1,47 +1,61 @@
-pipeline{
+pipeline {
     agent any
-    stages{
-        stage('Build'){
-            steps{
-                echo 'Building Application'
+
+    stages {
+        stage('Checkout') {
+            steps {
+                echo 'Pulling code from GitHub'
             }
         }
-        stage('Test'){
-            steps{
-                echo 'Testing Application'
+
+        stage('Build') {
+            steps {
+                echo 'Simulating build process'
+                bat 'echo Build successful'
             }
         }
-        stage('Deploy'){
-            steps{
-                echo 'Deploying Application'
+
+        stage('Test') {
+            steps {
+                echo 'Running basic tests'
+                bat 'echo Tests passed'
             }
+        }
+    }
+
+    post {
+        success {
+            echo 'Pipeline completed successfully'
+        }
+        failure {
+            echo 'Pipeline failed'
         }
     }
 }
 
-        
 
 
-// pipeline {
+
+
+// pipeline{
 //     agent any
-
-//     stages {
-//         stage('Build') {
-//             steps {
-//                 echo 'Building the project'
+//     stages{
+//         stage('Build'){
+//             steps{
+//                 echo 'Building Application'
 //             }
 //         }
-
-//         stage('Test') {
-//             steps {
-//                 echo 'Running tests'
+//         stage('Test'){
+//             steps{
+//                 echo 'Testing Application'
 //             }
 //         }
-
-//         stage('Deploy') {
-//             steps {
-//                 echo 'Deploying application'
+//         stage('Deploy'){
+//             steps{
+//                 echo 'Deploying Application'
 //             }
 //         }
 //     }
 // }
+
+     
